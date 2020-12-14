@@ -296,8 +296,11 @@ public class OkHttpSardine implements Sardine {
     }
 
     @Override
-    public void put(String url, InputStream dataStream) throws IOException
-    {
+    public void put(String url, InputStream dataStream) throws IOException {
+
+    }
+
+    public void put(String url, InputStream dataStream, String size) throws IOException {
         RequestBody rb = create(MediaType.parse("binary/octet-stream"), dataStream);
 
         Request request = new Request.Builder()
@@ -305,10 +308,11 @@ public class OkHttpSardine implements Sardine {
                 .put(rb)
                 .addHeader("Transfer-Encoding", "chunked")
                 .addHeader("Expect", "100-Continue")
-                .addHeader("Content-Length", "-1")
+                .addHeader("Content-Length", size)
                 .build();
 
         Response r = client.newCall(request).execute();
+        r.close();
     }
 
     @Override
