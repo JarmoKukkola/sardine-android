@@ -29,9 +29,11 @@ android {
 }
 
 dependencies {
-    api 'com.squareup.okhttp3:okhttp:4.1.1'
+    api 'com.squareup.okhttp3:okhttp:4.9.0'
 
-    implementation ('org.simpleframework:simple-xml:2.7.1') {
+    implementation "androidx.annotation:annotation:1.1.0"
+    implementation 'commons-net:commons-net:3.7.2'
+    implementation('org.simpleframework:simple-xml:2.7.1') {
         exclude module: 'stax'
         exclude module: 'stax-api'
         exclude module: 'xpp3'
