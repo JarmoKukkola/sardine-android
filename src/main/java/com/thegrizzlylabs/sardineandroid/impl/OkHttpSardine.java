@@ -296,10 +296,6 @@ public class OkHttpSardine implements Sardine {
     }
 
     @Override
-    public void put(String url, InputStream dataStream) throws IOException {
-
-    }
-
     public void put(String url, InputStream dataStream, String size) throws IOException {
         RequestBody rb = create(MediaType.parse("binary/octet-stream"), dataStream);
 
